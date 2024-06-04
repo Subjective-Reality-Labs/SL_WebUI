@@ -1,0 +1,16 @@
+@media screen and (max-width: 480px) {
+  .onoff {
+    right: -1rem;
+    top: 2.5rem;
+    transform: none;
+  }
+  .settings {
+    width: 100vw;
+    // height: 100vh;
+    // left: -1rem;
+    left: 0;
+  }
+  .set-buttons {
+    transform: none;
+  }
+}

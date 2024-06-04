@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="preload-transitions">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Lamp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/style.css"
+    />
+    <link rel="icon" sizes="32x32" type="image/png" href="images/icon.png" />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700&display=swap"
+      rel="stylesheet"
+    /> -->
+  </head>
+  <body class="preload-transitions">
+    <div class="slider">
+      <h1></h1>
+      <input type="range" class="main_range" min="0" max="100" value="0" />
+      <div class="shadow"></div>
+    </div>
+    <div class="onoff">
+      <button class="b-on but">on</button>
+      <button class="b-off but">off</button>
+      <div class="pivot"></div>
+    </div>
+    <div class="settings-background"></div>
+    <div class="settings">
+      <div class="set-buttons">
+        <button class="cred but">about</button>
+        <button class="mqtt but hidden">mqtt</button>
+        <button class="wifi but">wifi</button>
+        <button class="set but">settings</button>
+        <div class="pivot"></div>
+      </div>
+      <div class="cards">
+        <div class="set card">
+          <div class="content">
+            <div class="set-lbl">
+              <input type="checkbox" id="splash" class="setting-local" />
+              <label for="splash">Show splash animation</label>
+            </div>
+            <label for="lamp_name" class="set-lbl">Name of the lamp:</label>
+            <input
+              type="text"
+              minlength="3"
+              maxlength="64"
+              size="3"
+              id="lamp_name"
+              class="setting"
+            />
+            <label for="state" class="set-lbl">PowerOn state:</label>
+            <!-- <select name="state" id="state">
+              <option value="save">Remember state</option>
+              <option value="on">On</option>
+              <option value="off">Off</option>
+            </select> -->
+            <div class="custom-select setting" id="power_on_state">
+              <input
+                name="item"
+                type="radio"
+                id="power_on_state:2"
+                title="Remember state"
+                checked
+              />
+              <input
+                name="item"
+                type="radio"
+                id="power_on_state:1"
+                title="On"
+              />
+              <input
+                name="item"
+                type="radio"
+                id="power_on_state:0"
+                title="Off"
+              />
+              <div class="custom-select-labels">
+                <label name="item" for="power_on_state:2">Remember state</label>
+                <label name="item" for="power_on_state:1">On</label>
+                <label name="item" for="power_on_state:0">Off</label>
+              </div>
+            </div>
+            <div class="set-lbl">
+              <input type="checkbox" id="on_button" class="setting" />
+              <label for="on_button">Use on/off button</label>
+            </div>
+            <div class="more">
+              <button id="advanced-opt"></button>
+              <label for="advanced-opt">Advanced options</label>
+            </div>
+            <div class="more-div">
+              <div class="set-lbl">
+                <input type="checkbox" id="mqtt_use" class="setting" />
+                <label for="mqtt_use">Use MQTT</label>
+              </div>
+              <!-- <button class="but mqtt-settings">MQTT Settings</button> -->
+              <button class="but update">Update firmware</button>
+              <button class="but factory">Factory reset</button>
+            </div>
+          </div>
+          <div class="confirm-buttons">
+            <button class="but save">save</button>
+            <!-- <button class="but back">back</button> -->
+          </div>
+        </div>
+        <div class="wifi card hidden-down">
+          <div class="content">
+            <button class="but wifi-current"></button>
+            <!-- <div class="wifi-current">
+              <h2>Current connection:</h2>
+              <h2></h2>
+            </div> -->
+            <div class="wifi-connect">
+              <div class="title">
+                <img src="images/rescan.svg" class="reload-icon" />
+                <h3>Scan for networks</h3>
+              </div>
+              <div class="networks"></div>
+              <p class="manual">Add manually</p>
+            </div>
+            <div class="more">
+              <button id="advanced-opt-wif"></button>
+              <label for="advanced-opt-wifi">Advanced options</label>
+            </div>
+            <div class="more-div">
+              <label class="set-lbl" for="wifi:hotspot_name"
+                >Hotspot name:</label
+              >
+              <input
+                type="text"
+                minlength="3"
+                maxlength="32"
+                size="3"
+                name="hotspot_name"
+                id="wifi:hotspot_name"
+                class="setting"
+              />
+              <label class="set-lbl" for="wifi:hotspot_password"
+                >Hotspot password:</label
+              >
+              <input
+                type="password"
+                minlength="8"
+                maxlength="63"
+                size="3"
+                name="hotspot_password"
+                id="wifi:hotspot_password"
+                class="setting"
+              />
+            </div>
+          </div>
+          <div class="confirm-buttons">
+            <button class="but save">save</button>
+          </div>
+        </div>
+        <div class="mqtt card hidden-down">
+          <div class="content">
+            <label class="set-lbl" for="mqtt:server">Server address:</label>
+            <input
+              type="text"
+              minlength="8"
+              maxlength="63"
+              name="mqtt:server"
+              id="mqtt:server"
+              class="setting"
+              placeholder="http://"
+            />
+            <label class="set-lbl" for="mqtt:port">Server port:</label>
+            <input
+              type="text"
+              minlength="2"
+              maxlength="6"
+              pattern="\d+"
+              name="port"
+              id="mqtt:port"
+              class="setting"
+            />
+            <label class="set-lbl" for="mqtt:username">Username:</label>
+            <input
+              type="text"
+              maxlength="32"
+              name="username"
+              id="mqtt:username"
+              class="setting"
+            />
+            <label class="set-lbl" for="mqtt:password">Password:</label>
+            <input
+              type="password"
+              maxlength="32"
+              name="password"
+              id="mqtt:password"
+              class="setting"
+            />
+            <div class="set-lbl">
+              <input type="checkbox" id="mqtt:ha_discovery" class="setting" />
+              <label for="mqtt:ha_discovery">Use HA discovery</label>
+            </div>
+            <div class="more-div">
+              <label class="set-lbl" for="mqtt:topic">Topic:</label>
+              <input
+                type="text"
+                maxlength="32"
+                name="topic"
+                id="mqtt:topic"
+                class="setting"
+              />
+              <label class="set-lbl" for="mqtt:on_cmd">ON command:</label>
+              <input
+                type="text"
+                maxlength="32"
+                name="on_cmd"
+                id="mqtt:on_cmd"
+                class="setting"
+              />
+              <label class="set-lbl" for="mqtt:off_cmd">OFF command:</label>
+              <input
+                type="text"
+                maxlength="32"
+                name="off_cmd"
+                id="mqtt:off_cmd"
+                class="setting"
+              />
+            </div>
+          </div>
+          <div class="confirm-buttons">
+            <button class="but save">save</button>
+          </div>
+        </div>
+        <div class="cred card hidden-down">
+          <div class="content">
+            <div class="lamp-info">
+              <img class="lamp-img" src="images/SL001.svg" />
+              <div>
+                <h2>SL-001</h2>
+                <p id="serial_id">S/N: 0001</p>
+                <p id="sw_version">Firmware: 0.70</p>
+              </div>
+            </div>
+            <div class="about">
+              <p>
+                This software is open source and is distributed under GPL.
+                <a href="https://github.com/Subjective-Reality-Labs/"
+                  >Source code.</a
+                >
+              </p>
+              <footer>
+                <img src="images/SRL_logo.png" />
+                <div>
+                  <p>© 2022</p>
+                  <a href="https://subjectiverealitylabs.com"
+                    >Subjective Reality Labs</a
+                  >
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="splash paused">
+      <div class="splash-mask paused">
+        <div class="circle0 circle paused"><div class="circle-inner-red circle paused"></div></div>
+        <div class="circle1 circle paused"><div class="circle-mask paused"></div></div>
+        <div class="circle2 circle paused"></div>
+        <div class="circle3 circle paused"></div>
+      </div>
+    </div>
+    <div class="popup-container">
+      <div class="popup">
+        <div class="confirm-buttons">
+        </div>
+        <div class="content"></div>
+      </div>
+    </div>
+    <!-- <script type="module" src="js/app/main.js"></script>
+    <script src="js/custom_select.js"></script>
+    <script>
+      setTimeout(()=>{
+        if (window.mainJS != true) {
+        //the flag was not found, so the code has not run
+          window.location.reload();
+        }
+      }, 1000);
+    </script> -->
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>

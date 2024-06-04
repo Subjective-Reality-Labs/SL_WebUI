@@ -1,0 +1,36 @@
+background:
+    /* cover top*/
+    linear-gradient(
+        to bottom,
+        white 5%,
+        rgba(255, 255, 255, 0) 5%,
+    )
+    center top,
+    
+    /* cover bottom */
+    linear-gradient(
+        to top,
+        white 5%,
+        rgba(255, 255, 255, 0) 5%,
+    )
+    center bottom,
+    
+    /* shadow top */
+    linear-gradient(
+        to bottom,
+        $red 5%,
+        rgba(255, 255, 255, 0) 5%,
+    )
+    10px top,
+    
+    /* shadow bottom */
+    linear-gradient(
+        to top,
+        $red 5%,
+        rgba(255, 255, 255, 0) 5%,
+    )
+    10px bottom;
+
+background-repeat: no-repeat;
+background-attachment: local, local, scroll, scroll;
+background-size: 100% 100%, 100% 100%, 10px 100%, 10px 100%;
